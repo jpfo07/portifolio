@@ -19,7 +19,6 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -29,24 +28,19 @@
     overflow-x: hidden;
   }
 
-  /* Scanlines overlay */
   body::before {
     content: '';
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.03) 2px,
-      rgba(0,0,0,0.03) 4px
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
     );
     pointer-events: none;
     z-index: 9999;
   }
 
-  /* Grid background */
   body::after {
     content: '';
     position: fixed;
@@ -95,11 +89,9 @@
   }
 
   .nav-links a:hover { color: var(--cyan); }
-
   .nav-links a::before { content: '// '; color: var(--purple); opacity: 0; transition: opacity 0.3s; }
   .nav-links a:hover::before { opacity: 1; }
 
-  /* SECTIONS */
   section { position: relative; z-index: 1; }
 
   /* HERO */
@@ -221,7 +213,6 @@
     transform: translateY(-2px);
   }
 
-  /* Glowing orbs */
   .orb {
     position: absolute;
     border-radius: 50%;
@@ -232,14 +223,12 @@
   .orb-1 { width: 400px; height: 400px; background: rgba(0,212,255,0.06); top: 10%; right: -5%; }
   .orb-2 { width: 300px; height: 300px; background: rgba(123,47,255,0.07); top: 50%; right: 20%; }
 
-  /* CONTAINER */
   .container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 6rem 3rem;
   }
 
-  /* SECTION HEADER */
   .section-header {
     display: flex;
     align-items: center;
@@ -285,10 +274,7 @@
     margin-bottom: 1.2rem;
   }
 
-  .about-text p .keyword {
-    color: var(--cyan);
-    font-weight: 500;
-  }
+  .about-text p .keyword { color: var(--cyan); font-weight: 500; }
 
   .about-stats {
     display: grid;
@@ -350,11 +336,7 @@
 
   .skills-group-title::before { content: '// '; }
 
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.7rem;
-  }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.7rem; }
 
   .tag {
     padding: 0.5rem 1rem;
@@ -370,36 +352,21 @@
     border: 1px solid rgba(0, 212, 255, 0.2);
     color: var(--cyan);
   }
-
-  .tag-lang:hover {
-    background: rgba(0, 212, 255, 0.12);
-    border-color: var(--cyan);
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.15);
-  }
+  .tag-lang:hover { background: rgba(0, 212, 255, 0.12); border-color: var(--cyan); box-shadow: 0 0 10px rgba(0, 212, 255, 0.15); }
 
   .tag-framework {
     background: rgba(123, 47, 255, 0.05);
     border: 1px solid rgba(123, 47, 255, 0.2);
     color: var(--purple);
   }
-
-  .tag-framework:hover {
-    background: rgba(123, 47, 255, 0.12);
-    border-color: var(--purple);
-    box-shadow: 0 0 10px rgba(123, 47, 255, 0.15);
-  }
+  .tag-framework:hover { background: rgba(123, 47, 255, 0.12); border-color: var(--purple); box-shadow: 0 0 10px rgba(123, 47, 255, 0.15); }
 
   .tag-db {
     background: rgba(0, 255, 136, 0.05);
     border: 1px solid rgba(0, 255, 136, 0.2);
     color: var(--green);
   }
-
-  .tag-db:hover {
-    background: rgba(0, 255, 136, 0.12);
-    border-color: var(--green);
-    box-shadow: 0 0 10px rgba(0, 255, 136, 0.15);
-  }
+  .tag-db:hover { background: rgba(0, 255, 136, 0.12); border-color: var(--green); box-shadow: 0 0 10px rgba(0, 255, 136, 0.15); }
 
   /* PROJECTS */
   #projetos { background: var(--bg2); }
@@ -418,6 +385,8 @@
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   .project-card::after {
@@ -433,14 +402,14 @@
 
   .project-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-5px); }
   .project-card:hover::after { transform: scaleX(1); }
+  .project-card.placeholder { opacity: 0.45; border-style: dashed; }
 
-  .project-card.placeholder { opacity: 0.5; border-style: dashed; }
-
-  .project-folder {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: var(--cyan);
+  /* Card real — borda levemente destacada */
+  .project-card.real {
+    border-color: rgba(0, 212, 255, 0.25);
   }
+
+  .project-folder { font-size: 1.8rem; margin-bottom: 1rem; color: var(--cyan); }
 
   .project-title {
     font-family: 'Orbitron', monospace;
@@ -453,15 +422,36 @@
 
   .project-desc {
     font-size: 0.8rem;
-    line-height: 1.8;
+    line-height: 1.85;
     color: #8892b0;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+
+  /* Bloco de hospedagem */
+  .project-hosting {
+    font-size: 0.72rem;
+    line-height: 1.7;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-hosting .host-label {
+    color: var(--green);
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.3rem;
   }
 
   .project-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    margin-bottom: 0;
   }
 
   .project-tag {
@@ -474,10 +464,17 @@
     border-radius: 2px;
   }
 
+  /* Tag de tecnologia com cor */
+  .project-tag.tech-java   { color: #f89820; border-color: rgba(248,152,32,0.35); background: rgba(248,152,32,0.05); }
+  .project-tag.tech-spring { color: #6db33f; border-color: rgba(109,179,63,0.35); background: rgba(109,179,63,0.05); }
+  .project-tag.tech-react  { color: #61dafb; border-color: rgba(97,218,251,0.35); background: rgba(97,218,251,0.05); }
+  .project-tag.tech-pg     { color: #336791; border-color: rgba(51,103,145,0.5);  background: rgba(51,103,145,0.07); }
+  .project-tag.tech-cloud  { color: #f6821f; border-color: rgba(246,130,31,0.35); background: rgba(246,130,31,0.05); }
+
   .project-links {
     display: flex;
     gap: 1rem;
-    margin-top: 1.5rem;
+    margin-top: 1.3rem;
   }
 
   .project-link {
@@ -493,6 +490,19 @@
   }
 
   .project-link:hover { color: var(--cyan); }
+
+  .project-link.live {
+    color: var(--cyan);
+    border: 1px solid rgba(0,212,255,0.3);
+    padding: 0.35rem 0.8rem;
+    border-radius: 3px;
+    transition: all 0.3s;
+  }
+
+  .project-link.live:hover {
+    background: rgba(0,212,255,0.1);
+    box-shadow: 0 0 12px rgba(0,212,255,0.2);
+  }
 
   /* CONTACT */
   #contato { background: var(--bg); }
@@ -571,7 +581,6 @@
 
   .contact-link:hover .contact-link-label { color: var(--cyan); }
 
-  /* FORM */
   .contact-form {
     background: var(--bg2);
     border: 1px solid var(--border);
@@ -591,7 +600,6 @@
   .form-title::before { content: '> '; color: var(--green); }
 
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-
   .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
 
   .form-group label {
@@ -644,7 +652,6 @@
     box-shadow: 0 0 20px rgba(0,212,255,0.2);
   }
 
-  /* FOOTER */
   footer {
     border-top: 1px solid var(--border);
     padding: 2rem 3rem;
@@ -658,10 +665,9 @@
 
   footer span { color: var(--cyan); }
 
-  /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .reveal {
@@ -672,13 +678,11 @@
 
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* SCROLLBAR */
   ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
 
-  /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { gap: 1rem; }
@@ -743,7 +747,7 @@
           universo do desenvolvimento.
         </p>
         <p>
-          Iniciei minha jornada acadêmica em <span class="keyword">2023</span> com um curso
+          Iniciei minha jornada acadêmica em <span class="keyword">2024</span> com um curso
           técnico em <span class="keyword">Análise e Desenvolvimento de Sistemas</span>, e hoje
           sigo evoluindo como estudante de Engenharia de Software, buscando consolidar
           minha base teórica e prática.
@@ -756,8 +760,8 @@
       </div>
       <div class="about-stats reveal">
         <div class="stat-card">
-          <div class="stat-num">2+</div>
-          <div class="stat-label">Anos de Estudo</div>
+          <div class="stat-num">2024</div>
+          <div class="stat-label">Início dos Estudos</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">10+</div>
@@ -768,8 +772,8 @@
           <div class="stat-label">Formações</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">∞</div>
-          <div class="stat-label">Vontade de Aprender</div>
+          <div class="stat-num">1</div>
+          <div class="stat-label">Projeto Real</div>
         </div>
       </div>
     </div>
@@ -806,15 +810,20 @@
         <span class="tag tag-framework">React</span>
         <span class="tag tag-framework">React Native</span>
         <span class="tag tag-framework">Spring Boot</span>
+        <span class="tag tag-framework">Vite</span>
       </div>
     </div>
 
     <div class="skills-group reveal">
       <p class="skills-group-title">Banco de Dados & Cloud</p>
       <div class="tags">
+        <span class="tag tag-db">PostgreSQL</span>
         <span class="tag tag-db">MongoDB</span>
         <span class="tag tag-db">Azure</span>
-        <span class="tag tag-db">DBase</span>
+        <span class="tag tag-db">Cloudinary</span>
+        <span class="tag tag-db">Railway</span>
+        <span class="tag tag-db">Vercel</span>
+        <span class="tag tag-db">Neon</span>
       </div>
     </div>
   </div>
@@ -830,18 +839,43 @@
     </div>
 
     <div class="projects-grid">
-      <div class="project-card placeholder reveal">
-        <div class="project-folder">⬡</div>
-        <h3 class="project-title">Em Breve — Projeto 01</h3>
+
+      <!-- PROJETO REAL — IMOBILIÁRIA -->
+      <div class="project-card real reveal">
+        <div class="project-folder">🏠</div>
+        <h3 class="project-title">Moreira &amp; Oliveira Imóveis</h3>
         <p class="project-desc">
-          Este slot está reservado para um projeto incrível que está sendo construído.
-          Volte em breve!
+          Plataforma imobiliária desenvolvida do zero para um cliente real.
+          Inclui catálogo de imóveis com filtros avançados, painel administrativo
+          completo, upload de imagens com marca d'água automática e integração
+          com WhatsApp para contato direto com o corretor.
         </p>
+
+        <div class="project-hosting">
+          <span class="host-label">// Hospedagem</span>
+          Backend em <strong style="color:var(--text)">Railway</strong> (Java/Spring Boot) ·
+          Frontend em <strong style="color:var(--text)">Vercel</strong> (React/Vite) ·
+          Banco de dados <strong style="color:var(--text)">PostgreSQL</strong> gerenciado pelo <strong style="color:var(--text)">Neon</strong> ·
+          Imagens armazenadas no <strong style="color:var(--text)">Cloudinary</strong>
+        </div>
+
         <div class="project-tags">
-          <span class="project-tag">Em Desenvolvimento</span>
+          <span class="project-tag tech-java">Java</span>
+          <span class="project-tag tech-spring">Spring Boot</span>
+          <span class="project-tag tech-react">React</span>
+          <span class="project-tag tech-react">Vite</span>
+          <span class="project-tag tech-pg">PostgreSQL</span>
+          <span class="project-tag tech-cloud">Cloudinary</span>
+        </div>
+
+        <div class="project-links">
+          <a href="https://moreiraeoliveiraimoveis.com.br" target="_blank" rel="noopener noreferrer" class="project-link live">
+            ↗ Ver site
+          </a>
         </div>
       </div>
 
+      <!-- PLACEHOLDER 2 -->
       <div class="project-card placeholder reveal">
         <div class="project-folder">⬡</div>
         <h3 class="project-title">Em Breve — Projeto 02</h3>
@@ -854,6 +888,7 @@
         </div>
       </div>
 
+      <!-- PLACEHOLDER 3 -->
       <div class="project-card placeholder reveal">
         <div class="project-folder">⬡</div>
         <h3 class="project-title">Em Breve — Projeto 03</h3>
@@ -864,6 +899,7 @@
           <span class="project-tag">Em Desenvolvimento</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -893,11 +929,11 @@
           <span class="contact-link-icon">📱</span>
           <span class="contact-link-label">WhatsApp</span>
         </a>
-        <a href="https://github.com/jpfo07" target="_blank" class="contact-link">
+        <a href="https://github.com/jpfo07" target="_blank" rel="noopener noreferrer" class="contact-link">
           <span class="contact-link-icon">⌥</span>
           <span class="contact-link-label">GitHub</span>
         </a>
-        <a href="https://www.linkedin.com/in/joão-paulo-francisco-de-oliveira-0492a0306" target="_blank" class="contact-link">
+        <a href="https://www.linkedin.com/in/joão-paulo-francisco-de-oliveira-0492a0306" target="_blank" rel="noopener noreferrer" class="contact-link">
           <span class="contact-link-icon">◈</span>
           <span class="contact-link-label">LinkedIn</span>
         </a>
@@ -934,8 +970,8 @@
   <p>Desenvolvido com <span>&#60;/&#62;</span> por <span>João Paulo Francisco de Oliveira</span> — 2025</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Typewriter effect
+<script>
+  // Typewriter
   const texts = [
     'Estudante de Engenharia de Software',
     'Desenvolvedor Full Stack em Formação',
@@ -950,18 +986,11 @@
     if (!deleting) {
       el.textContent = current.slice(0, charIndex + 1);
       charIndex++;
-      if (charIndex === current.length) {
-        deleting = true;
-        setTimeout(type, 2000);
-        return;
-      }
+      if (charIndex === current.length) { deleting = true; setTimeout(type, 2000); return; }
     } else {
       el.textContent = current.slice(0, charIndex - 1);
       charIndex--;
-      if (charIndex === 0) {
-        deleting = false;
-        textIndex = (textIndex + 1) % texts.length;
-      }
+      if (charIndex === 0) { deleting = false; textIndex = (textIndex + 1) % texts.length; }
     }
     setTimeout(type, deleting ? 50 : 80);
   }
@@ -971,19 +1000,17 @@
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-      }
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
     });
   }, { threshold: 0.1 });
   reveals.forEach(r => observer.observe(r));
 
-  // Form submit via Formspree
+  // Form — Formspree
   document.getElementById("submit-btn").addEventListener("click", async () => {
     const btn = document.getElementById("submit-btn");
     const status = document.getElementById("form-status");
-    const name = document.querySelector("input[name=name]").value;
-    const email = document.querySelector("input[name=email]").value;
+    const name    = document.querySelector("input[name=name]").value;
+    const email   = document.querySelector("input[name=email]").value;
     const subject = document.querySelector("input[name=subject]").value;
     const message = document.querySelector("textarea[name=message]").value;
 
@@ -1011,24 +1038,18 @@
         status.textContent = "Obrigado! Responderei em breve.";
         status.style.color = "var(--green)";
         status.style.display = "block";
-        document.querySelector("input[name=name]").value = "";
-        document.querySelector("input[name=email]").value = "";
-        document.querySelector("input[name=subject]").value = "";
+        ["name","email","subject"].forEach(n => document.querySelector(`input[name=${n}]`).value = "");
         document.querySelector("textarea[name=message]").value = "";
         setTimeout(() => {
           btn.textContent = "Enviar Mensagem →";
-          btn.style.borderColor = "";
-          btn.style.color = "";
+          btn.style.borderColor = btn.style.color = "";
           btn.disabled = false;
           status.style.display = "none";
         }, 4000);
-      } else {
-        throw new Error();
-      }
+      } else { throw new Error(); }
     } catch {
       btn.textContent = "Erro ao enviar. Tente novamente.";
-      btn.style.borderColor = "#ff4444";
-      btn.style.color = "#ff4444";
+      btn.style.borderColor = btn.style.color = "#ff4444";
       btn.disabled = false;
       status.textContent = "Algo deu errado. Tente novamente.";
       status.style.color = "#ff4444";
